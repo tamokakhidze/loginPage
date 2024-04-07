@@ -77,7 +77,7 @@ extension ViewController {
         authorisationMainStackView.heightAnchor.constraint(equalToConstant: 528).isActive = true
         authorisationMainStackView.widthAnchor.constraint(equalToConstant: 335).isActive = true
         authorisationMainStackView.axis = .vertical
-        authorisationMainStackView.alignment = .fill
+        authorisationMainStackView.alignment = .center
         authorisationMainStackView.distribution = .fill
         authorisationMainStackView.spacing = 4
         
@@ -91,7 +91,7 @@ extension ViewController {
         bottomBorderView.translatesAutoresizingMaskIntoConstraints = false
         bottomBorderView.backgroundColor = UIColor(red: 51/255, green: 165/255, blue: 229/255, alpha: 1.0)
         bottomBorderView.heightAnchor.constraint(equalToConstant: 2).isActive = true
-        bottomBorderView.widthAnchor.constraint(equalToConstant: 326).isActive = true
+        bottomBorderView.widthAnchor.constraint(equalToConstant: 300).isActive = true
         authorisationLabel.font = authorisationLabel.font.withSize(14)
         
         let labelForInput = createLabelForInput(text: "სახელი გვარი")
@@ -152,7 +152,7 @@ extension ViewController {
         
         let halfBorder = UIView()
         halfBorder.translatesAutoresizingMaskIntoConstraints = false
-        halfBorder.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        halfBorder.widthAnchor.constraint(equalToConstant: 150).isActive = true
         halfBorder.heightAnchor.constraint(equalToConstant: 0.5).isActive = true
         halfBorder.backgroundColor = .gray
         
@@ -162,9 +162,11 @@ extension ViewController {
     func createLabelForInput(text: String) -> UILabel {
         
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.text = text
         label.font = label.font.withSize(12)
         label.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        label.widthAnchor.constraint(equalToConstant: 335).isActive = true
         
         return label
     }
@@ -182,6 +184,7 @@ extension ViewController {
         input.clipsToBounds = true
         input.layer.borderColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1.0).cgColor
         input.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        input.widthAnchor.constraint(equalToConstant: 335).isActive = true
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: input.frame.height))
         input.leftView = paddingView
         input.leftViewMode = .always
@@ -196,6 +199,7 @@ extension ViewController {
         signInButton.layer.backgroundColor = UIColor(red: 51/255, green: 165/255, blue: 229/255, alpha: 1.0).cgColor
         signInButton.layer.cornerRadius = 12
         signInButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        signInButton.widthAnchor.constraint(equalToConstant: 335).isActive = true
         signInButton.setTitle("შესვლა", for: .normal)
         signInButton.addTarget(self, action: #selector(signInButtonPressed(_:)), for: .touchUpInside)
         
