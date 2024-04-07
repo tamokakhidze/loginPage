@@ -13,6 +13,7 @@ extension UIStackView {
 extension ViewController {
     
     func createMainStackView() {
+        
         view.addSubview(mainStackView)
         mainStackView.axis = .vertical
         mainStackView.translatesAutoresizingMaskIntoConstraints  = false
@@ -26,6 +27,7 @@ extension ViewController {
     }
     
     func createLockImage() {
+        
         let lockImage = UIImageView(image: UIImage(systemName: "lock.laptopcomputer"))
         lockImage.tintColor = .black
         lockImage.widthAnchor.constraint(equalToConstant: 90).isActive = true
@@ -35,6 +37,7 @@ extension ViewController {
     }
     
     func createWelcomeStackView() {
+        
         mainStackView.addArrangedSubview(welcomeStackView)
         welcomeStackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         welcomeStackView.widthAnchor.constraint(equalToConstant: 335).isActive = true
@@ -42,6 +45,7 @@ extension ViewController {
     }
     
     func createWelcomeLabel() -> UILabel {
+        
         let welcomeLabel = UILabel()
         let text = "მოგესალმებით!\nამ აპლიკაციის გამოყენების საუკეთესო გზა თქვენს ანგარიშზე შესვლაა, თუ არ გაქვთ ანგარიში გააკეთეთ, თუ არ გსურთ გაკეთება დასტოვეთ აქაურობა და წაშალეთ აპი. პკ."
         
@@ -65,15 +69,18 @@ extension ViewController {
     }
     
     func createAuthorisationStackView() {
+        
         let authorisationMainStackView = UIStackView()
         mainStackView.addArrangedSubview(authorisationMainStackView)
+        authorisationMainStackView.translatesAutoresizingMaskIntoConstraints = false
+
         authorisationMainStackView.heightAnchor.constraint(equalToConstant: 528).isActive = true
         authorisationMainStackView.widthAnchor.constraint(equalToConstant: 335).isActive = true
         authorisationMainStackView.axis = .vertical
         authorisationMainStackView.alignment = .fill
         authorisationMainStackView.distribution = .fill
         authorisationMainStackView.spacing = 4
-
+        
         let authorisationLabel = UILabel()
         authorisationLabel.text = "ავტორიზაცია"
         authorisationLabel.font = UIFont(name: "Sylfaen", size: 22)
@@ -142,6 +149,7 @@ extension ViewController {
     }
     
     func createDividerView() -> UIView {
+        
         let halfBorder = UIView()
         halfBorder.translatesAutoresizingMaskIntoConstraints = false
         halfBorder.widthAnchor.constraint(equalToConstant: 140).isActive = true
@@ -152,6 +160,7 @@ extension ViewController {
     }
     
     func createLabelForInput(text: String) -> UILabel {
+        
         let label = UILabel()
         label.text = text
         label.font = label.font.withSize(12)
@@ -162,7 +171,9 @@ extension ViewController {
     
     
     func createInputField(placeholder: String, isSecuredText: Bool = false) -> UITextField {
+        
         let input = UITextField()
+        input.translatesAutoresizingMaskIntoConstraints = false
         input.placeholder = placeholder
         input.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12)])
         input.isSecureTextEntry = isSecuredText
@@ -178,8 +189,10 @@ extension ViewController {
         return input
     }
     
-    func createSignInButton() -> UIButton{
+    func createSignInButton() -> UIButton {
+        
         let signInButton = UIButton()
+        signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.layer.backgroundColor = UIColor(red: 51/255, green: 165/255, blue: 229/255, alpha: 1.0).cgColor
         signInButton.layer.cornerRadius = 12
         signInButton.heightAnchor.constraint(equalToConstant: 46).isActive = true
@@ -190,8 +203,9 @@ extension ViewController {
     }
     
     func validatePassword(input: UITextField) {
+        
         if input.text!.count < 6 || input.text!.count > 15 {
-                input.layer.borderColor = UIColor(.red).cgColor
+            input.layer.borderColor = UIColor(.red).cgColor
         }
         else {
             input.layer.borderColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1.0).cgColor
@@ -199,6 +213,7 @@ extension ViewController {
     }
     
     func validateEmail(input: UITextField, email: String) {
+        
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
         let isEmailValid = emailPredicate.evaluate(with: email)
@@ -209,8 +224,9 @@ extension ViewController {
             input.layer.borderColor = UIColor(red: 221/255, green: 221/255, blue: 221/255, alpha: 1.0).cgColor
         }
     }
-
+    
     @objc func signInButtonPressed(_ sender: UIButton) {
+        
         if let input = input3 {
             validatePassword(input: input)
         } else {
@@ -225,7 +241,7 @@ extension ViewController {
             validateEmail(input: email, email: emailText)
         }
     }
-
+    
 }
 
 #Preview {
